@@ -26,6 +26,18 @@ O jogador poderá ver a todo momento como está os atributos de seu bichinho, af
 
 O jogo termina quando a vida do seu bichinho chegar a 0, indicando que ele não foi cuidado o suficiente para sobreviver em suas mãos.
 
+#### Mecânica de Pontuação - Evolução do Bichinho:
+
+No jogo, o bichinho virtual evolui por meio das interações do jogador. A cada estágio, o número de interações realizadas com o bichinho determinará seu crescimento:
+
+Filhote → Criança: 5 interações
+Criança → Adolescente: 10 interações
+Adolescente → Adulto: 15 interações
+
+Ao atingir o estágio adulto, o jogador receberá uma mensagem especial: “Parabéns, você cuidou bem do seu bichinho!”.
+
+Essa evolução incentiva o jogador a interagir constantemente e a acompanhar o desenvolvimento gradual do bichinho.
+
 <h3>Integrantes da Equipe</h3>
 
 <ul>
