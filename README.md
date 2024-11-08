@@ -1,20 +1,40 @@
-# cli-lib
-Command Line Interface library, for developing CLI applications and games in C. It has functions to access keyboard, screen and manage timing tasks.
+## Projeto de Programação Imperativa e Funcional - 2024.2 - CESAR School
 
-## Requirements
-- This library works with the follwing OS:
-   - Linux based (Ubuntu, etc)
-   - MacOS
-- It is necessary to have GCC installed.
+<h3>História do Jogo</h3>
 
-## Usage 
-The file `main.c` has an example of how to use the Keyboard, Screen nd Timer functions. 
+#### Você foi encarregado de cuidar de um bichinho que chegou à porta de sua casa. Sua missão de agora em diante é cuidar de seu novo pet para ele viver uma longa e feliz vida.
 
-To build this example via command line, just switch to library root directory and type the following command:
-```
-$ gcc ./src/*.c -I./include -o cli-lib-example
-```
+<h3>Mecânicas do Jogo</h3>
 
-To use this library to create your own apps, simply add source and header files to your project and compile it together with your own code, 
-replacing the main.c file to your own.
+#### 1. Status e Decaimento ao Longo do Tempo
+
+O bichinho possui atributos como fome, felicidade, energia e saúde que devem ser mantidos em níveis saudáveis. A cada passagem de tempo (ou seja, turnos), os níveis dos atributos vão diminuindo, precisando que o jogador tome cuidado do bichinho para seus níveis não zerarem. Caso atributos como fome, felicidade ou energia cheguem a 0, isso afetará na saúde do bichinho.
+
+#### 2. Ações do Jogador
+
+O jogador cuida de seu bichinho em cada turno, podendo utilizar uma das seguintes ações por vez:
+
+- Brincar: Afeta na felicidade.
+- Alimentar: Afeta na fome.
+- Dormir: Afeta na energia.
+
+#### 3. Checagem dos Status
+
+O jogador poderá ver a todo momento como está os atributos de seu bichinho, afim de tomar as melhores escolhas para seus cuidados.
+
+#### 4. O 'Fim de Jogo'
+
+O jogo termina quando a vida do seu bichinho chegar a 0, indicando que ele não foi cuidado o suficiente para sobreviver em suas mãos.
+
+<h3>Integrantes da Equipe</h3>
+
+<ul>
+<li>Arthur Rodrigues <a href="https://github.com/wiithesecond">[@wiithesecond]</a></li>
+<li>Milo Moreira e Castro <a href="https://github.com/DuMilo">[@DuMilo]</a></li> 
+<li>Sofia Travassos Bezerra <a href="https://github.com/SofiaTravassos">[@SofiaTravassos]</a></li>
+</ul>
+<div><img src="https://avatars.githubusercontent.com/u/133171049?v=4" width=100px height=100px>
+  <img src="https://avatars.githubusercontent.com/u/132294227?v=4" width=100px height=100px>
+  <img src="https://avatars.githubusercontent.com/u/164456593?v=4" width=100px height=100px>  
+</div>
 
