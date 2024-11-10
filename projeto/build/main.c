@@ -112,15 +112,15 @@ void atualizarEstado(Bichinho *b) {
         b->felicidade -= 2;
     }
 
-    if (b->interacoes >= 15 && b->estagio == ADOLESCENTE) {
+    if (b->interacoes >= 20 && b->estagio == ADOLESCENTE) {
         b->estagio = ADULTO;
         screenSetColor(CYAN, BLACK);
         exibirMensagem("Parabéns! O bichinho virou Adulto!");
-    } else if (b->interacoes >= 10 && b->estagio == CRIANCA) {
+    } else if (b->interacoes >= 15 && b->estagio == CRIANCA) {
         b->estagio = ADOLESCENTE;
         screenSetColor(CYAN, BLACK);
         exibirMensagem("O bichinho agora é um Adolescente!");
-    } else if (b->interacoes >= 5 && b->estagio == FILHOTE) {
+    } else if (b->interacoes >= 10 && b->estagio == FILHOTE) {
         b->estagio = CRIANCA;
         screenSetColor(CYAN, BLACK);
         exibirMensagem("O bichinho evoluiu para Criança!");
