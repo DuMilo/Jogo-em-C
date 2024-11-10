@@ -27,16 +27,19 @@ typedef struct {
     int fome;
     int energia;
     int felicidade;
-    Estagio estagio; 
-    int interacoes;   
+    Estagio estagio;
+    int interacoes;
 } Bichinho;
 
 void atualizarPosicaoBichinho() {
+    screenGotoxy(x, y);
+    printf(" ");
+
     int newX = x + incX;
-    if (newX >= (MAXX - 1) || newX <= MINX) incX = -incX;
+    if (newX >= (MAXX - 2) || newX <= MINX + 5) incX = -incX;
     int newY = y + incY;
-    if (newY >= MAXY - 1 || newY <= MINY) incY = -incY;
-   
+    if (newY >= MAXY - 10 || newY <= MINY + 3) incY = -incY;
+
     x = newX;
     y = newY;
     screenGotoxy(x, y);
@@ -44,122 +47,153 @@ void atualizarPosicaoBichinho() {
 }
 
 void exibirEstado(Bichinho *b) {
-    screenGotoxy(2, MAXY - 4);
-    printf("Saúde: %d ", b->saude);
-    screenGotoxy(2, MAXY - 3);
+    screenGotoxy(2, MAXY - 8);
+    screenSetColor(GREEN, BLACK);
+    printf("SaÃºde: %d ", b->saude);
+    screenGotoxy(2, MAXY - 7);
+    screenSetColor(GREEN, BLACK);
     printf("Fome: %d ", b->fome);
-    screenGotoxy(2, MAXY - 2);
-    printf("Energia: %d ", b->energia);
-    screenGotoxy(2, MAXY - 1);
+    screenGotoxy(2, MAXY - 5);
+    screenSetColor(GREEN, BLACK);
     printf("Felicidade: %d ", b->felicidade);
+    screenGotoxy(2, MAXY - 6);
+    screenSetColor(GREEN, BLACK);
+    printf("Energia: %d ", b->energia);
+ 
 }
 
 void exibirEstagio(Bichinho *b) {
-    char *estagioStr = "Filhote";
-    switch (b->estagio) {
-        case FILHOTE: estagioStr = "Filhote"; break;
-        case CRIANCA: estagioStr = "Criança"; break;
-        case ADOLESCENTE: estagioStr = "Adolescente"; break;
-        case ADULTO: estagioStr = "Adulto"; break;
-    }
-    screenGotoxy(2, MAXY - 6);
-    printf("Estágio: %s", estagioStr);
+    const char *estagioStr[] = { "Filhote", "CrianÃ§a", "Adolescente", "Adulto" };
+    screenGotoxy(2, MAXY - 9);
+    screenSetColor(CYAN, BLACK);
+    printf("EstÃ¡gio:                     ");
+    screenGotoxy(2, MAXY - 9);
+    printf("EstÃ¡gio: %s", estagioStr[b->estagio]);
+}
+
+
+void exibirMensagem(const char *mensagem) {
+    screenGotoxy(2, MAXY - 22);;
+    printf("                                        ");
+    screenGotoxy(2, MAXY - 22);
+    printf("%s", mensagem);
 }
 
 void alimentar(Bichinho *b) {
     b->fome = MAX_FOME;
-    b->energia -= 5;  
-    b->interacoes++;   
-    screenSetColor(LIGHTGREEN, BLACK);
-    screenGotoxy(2, 1);
-    printf("Você alimentou %s! Fome: %d", b->nome, b->fome);
+    b->energia -= 5;
+    b->interacoes++;
+    screenSetColor(GREEN, BLACK);
+    exibirMensagem("VocÃª alimentou o bichinho!");
 }
 
 void brincar(Bichinho *b) {
     b->felicidade = MAX_FELICIDADE;
-    b->energia -= 10; 
-    b->interacoes++;  
-    screenSetColor(LIGHTMAGENTA, BLACK);
-    screenGotoxy(2, 1);
-    printf("Você brincou com %s! Felicidade: %d", b->nome, b->felicidade);
+    b->energia -= 10;
+    b->interacoes++;
+    screenSetColor(GREEN, BLACK);
+    exibirMensagem("VocÃª brincou com o bichinho!");
 }
 
 void dormir(Bichinho *b) {
     b->energia = MAX_ENERGIA;
-    b->interacoes++;  
-    screenSetColor(LIGHTCYAN, BLACK);
-    screenGotoxy(2, 1);
-    printf("%s dormiu! Energia: %d", b->nome, b->energia);
+    b->interacoes++;
+    exibirMensagem("O bichinho dormiu e recuperou energia!");
 }
 
 void atualizarEstado(Bichinho *b) {
     if (b->fome <= 0 || b->energia <= 0 || b->felicidade <= 0) {
-        b->saude--;
-        screenSetColor(LIGHTRED, BLACK);
-        screenGotoxy(2, MAXY - 5);
-        printf("Um dos atributos de %s está no zero! Saúde diminuindo: %d", b->nome, b->saude);
+        b->saude--; 
+        screenSetColor(RED, BLACK);
+        exibirMensagem("Cuidado! SaÃºde estÃ¡ diminuindo.");
     } else {
-        b->fome -= 2;
+        b->fome -= 1;
         b->energia -= 1;
-        b->felicidade -= 1;
+        b->felicidade -= 2;
     }
 
     if (b->interacoes >= 15 && b->estagio == ADOLESCENTE) {
         b->estagio = ADULTO;
-        screenSetColor(GREEN, BLACK);
-        screenGotoxy(2, MAXY - 7);
-        printf("Parabéns! %s agora é um Adulto!", b->nome);
+        screenSetColor(CYAN, BLACK);
+        exibirMensagem("ParabÃ©ns! O bichinho virou Adulto!");
     } else if (b->interacoes >= 10 && b->estagio == CRIANCA) {
         b->estagio = ADOLESCENTE;
-        screenSetColor(GREEN, BLACK);
-        screenGotoxy(2, MAXY - 7);
-        printf("%s evoluiu para Adolescente!", b->nome);
+        screenSetColor(CYAN, BLACK);
+        exibirMensagem("O bichinho agora Ã© um Adolescente!");
     } else if (b->interacoes >= 5 && b->estagio == FILHOTE) {
         b->estagio = CRIANCA;
-        screenSetColor(GREEN, BLACK);
-        screenGotoxy(2, MAXY - 7);
-        printf("%s evoluiu para Criança!", b->nome);
+        screenSetColor(CYAN, BLACK);
+        exibirMensagem("O bichinho evoluiu para CrianÃ§a!");
     }
 }
 
-void exibirMenu(Bichinho *b) {
-    screenGotoxy(2, 5);
+void exibirMenu() {
+    screenSetColor(CYAN, BLACK);
     screenSetColor(YELLOW, BLACK);
-    printf("%s está aguardando uma ação:\n", b->nome);
+    screenGotoxy(2, MAXY - 20);
+    printf("Escolha uma aÃ§Ã£o:\n");
+    screenGotoxy(2, MAXY - 19);
     printf("1 - Alimentar\n");
-    printf("2 - Brincar\n");
-    printf("3 - Dormir\n");
+    screenGotoxy(2, MAXY - 18);
+    printf("2 - Dormir\n");
+    screenGotoxy(2, MAXY - 17);
+    printf("3 - Brincar\n");
+    screenGotoxy(2, MAXY - 16);
     printf("q - Sair\n");
 }
 
 void pedirNome(Bichinho *b) {
     screenSetColor(CYAN, BLACK);
-    screenGotoxy(2, 2);
-    printf("Dê um nome ao seu bichinho: ");
-    fgets(b->nome, MAX_NOME, stdin);
-    b->nome[strcspn(b->nome, "\n")] = '\0';
+    screenGotoxy(2, MAXY - 21);
+    printf("O nome do seu bichinho Ã©: ");
+
+    int pos = 0;
+    char ch;
+
+    while (1) {
+        ch = getchar();
+
+        if (ch == '\n' && pos > 0) {
+            b->nome[pos] = '\0';
+            break;
+        } else if (ch == '\b' || ch == 127) {
+            if (pos > 0) {
+                pos--;
+                b->nome[pos] = '\0';
+                screenGotoxy(26 + pos, 2);
+                printf(" ");
+                screenGotoxy(26 + pos, 2);
+            }
+        } else if (pos < MAX_NOME - 1) {
+            b->nome[pos++] = ch;
+            b->nome[pos] = '\0';
+            printf("%c", ch);
+        }
+    }
+
+    while (getchar() != '\n');
 }
 
 int main() {
     Bichinho meuBichinho = { "", MAX_SAUDE, MAX_FOME, MAX_ENERGIA, MAX_FELICIDADE, FILHOTE, 0 };
-    int opcao = 0;
+    char opcao;
 
     screenInit(1);
     keyboardInit();
     timerInit(500);
-
     pedirNome(&meuBichinho);
+    exibirMensagem("Comece a cuidar do seu bichinho!");
 
     while (meuBichinho.saude > 0) {
-        exibirMenu(&meuBichinho);
+        exibirMenu();
         exibirEstado(&meuBichinho);
         exibirEstagio(&meuBichinho);
 
         if (keyhit()) {
             opcao = readch();
             if (opcao == '1') alimentar(&meuBichinho);
-            else if (opcao == '2') brincar(&meuBichinho);
-            else if (opcao == '3') dormir(&meuBichinho);
+            else if (opcao == '2') dormir(&meuBichinho);
+            else if (opcao == '3') brincar(&meuBichinho);
             else if (opcao == 'q') break;
         }
 
@@ -170,11 +204,8 @@ int main() {
         }
     }
 
-    if (meuBichinho.saude <= 0) {
-        screenSetColor(RED, BLACK);
-        screenGotoxy(2, 1);
-        printf("\n%s morreu! :(\n", meuBichinho.nome);
-    }
+    exibirMensagem("O bichinho morreu. :( Obrigado por jogar!");
+    sleep(2);
 
     keyboardDestroy();
     screenDestroy();
