@@ -30,11 +30,11 @@ O jogo termina quando a vida do seu bichinho chegar a 0, indicando que ele não 
 
 No jogo, o bichinho virtual evolui por meio das interações do jogador. A cada estágio, o número de interações realizadas com o bichinho determinará seu crescimento:
 
-- Filhote → Criança: 5 interações
-- Criança → Adolescente: 10 interações
-- Adolescente → Adulto: 15 interações
+- Filhote → Criança: 10 interações
+- Criança → Adolescente: 15 interações
+- Adolescente → Adulto: 20 interações
 
-Ao atingir o estágio adulto, o jogador receberá uma mensagem especial: “Parabéns, você cuidou bem do seu bichinho!”.
+Ao atingir o estágio adulto, você ainda poderá cuidar do seu bichinho, finalizando o jogo apenas ao clicar a tecla 'Q'.
 
 Essa evolução incentiva o jogador a interagir constantemente e a acompanhar o desenvolvimento gradual do bichinho.
 
