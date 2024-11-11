@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h> 
 #include <string.h>
 #include <unistd.h>
 #include "screen.h"
@@ -22,7 +23,7 @@ typedef enum {
 } Estagio;
 
 typedef struct {
-    char nome[MAX_NOME];
+    char *nome; 
     int saude;
     int fome;
     int energia;
@@ -59,7 +60,6 @@ void exibirEstado(Bichinho *b) {
     screenGotoxy(2, MAXY - 6);
     screenSetColor(GREEN, BLACK);
     printf("Energia: %d ", b->energia);
- 
 }
 
 void exibirEstagio(Bichinho *b) {
@@ -70,7 +70,6 @@ void exibirEstagio(Bichinho *b) {
     screenGotoxy(2, MAXY - 9);
     printf("Estágio: %s", estagioStr[b->estagio]);
 }
-
 
 void exibirMensagem(const char *mensagem) {
     screenGotoxy(2, MAXY - 22);;
@@ -150,6 +149,12 @@ void pedirNome(Bichinho *b) {
     int pos = 0;
     char ch;
 
+    b->nome = (char *)malloc(MAX_NOME * sizeof(char));
+    if (b->nome == NULL) {
+        exibirMensagem("Erro ao alocar memória para o nome!");
+        exit(1);
+    }
+
     while (1) {
         ch = getchar();
 
@@ -174,8 +179,12 @@ void pedirNome(Bichinho *b) {
     while (getchar() != '\n');
 }
 
+void liberarMemoria(Bichinho *b) {
+    free(b->nome);
+}
+
 int main() {
-    Bichinho meuBichinho = { "", MAX_SAUDE, MAX_FOME, MAX_ENERGIA, MAX_FELICIDADE, FILHOTE, 0 };
+    Bichinho meuBichinho = { NULL, MAX_SAUDE, MAX_FOME, MAX_ENERGIA, MAX_FELICIDADE, FILHOTE, 0 };
     char opcao;
 
     screenInit(1);
@@ -206,6 +215,8 @@ int main() {
 
     exibirMensagem("O bichinho morreu. :( Obrigado por jogar!");
     sleep(2);
+
+    liberarMemoria(&meuBichinho);
 
     keyboardDestroy();
     screenDestroy();
