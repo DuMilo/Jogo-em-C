@@ -40,6 +40,24 @@ Essa evolução incentiva o jogador a interagir constantemente e a acompanhar o 
 
 #
 
+#### Instruções para compilar e executar o jogo
+
+Pré-requisitos: 
+
+Esse jogo funciona com os seguintes sistemas operacionais: Linux (Ubuntu, etc) e MacOS;
+É necessário ter o gcc instalado;
+O jogo utiliza a biblioteca cli-lib(https://github.com/tgfb/cli-lib) para funcionar.
+
+#### Compilação:
+
+Para compilar o jogo, basta abrir a pasta onde o jogo está localizado e executar o seguinte comando: make
+
+execução do jogo:
+
+Para executar o jogo, basta abrir a pasta onde o jogo está localizado e executar o seguinte comando: ./build/Bichinho
+
+#
+
 ## Projeto de Programação Imperativa e Funcional - 2024.2 - CESAR School
 <h3>Integrantes da Equipe</h3>
 
