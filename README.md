@@ -1,6 +1,6 @@
 ## Projeto de Programação Imperativa e Funcional - 2024.2 - CESAR School
 
-<h3>Pulguinha Virtual</h3>
+<h2>Pulguinha Virtual</h2>
 
 <h3>História do Jogo</h3>
 
