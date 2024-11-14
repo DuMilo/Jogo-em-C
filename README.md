@@ -1,6 +1,4 @@
-## Projeto de Programação Imperativa e Funcional - 2024.2 - CESAR School
-
-<h2>Pulguinha Virtual</h2>
+<h1>Pulguinha Virtual</h1>
 
 <h3>História do Jogo</h3>
 
@@ -40,6 +38,9 @@ Ao atingir o estágio adulto, você ainda poderá cuidar do seu bichinho, finali
 
 Essa evolução incentiva o jogador a interagir constantemente e a acompanhar o desenvolvimento gradual do bichinho.
 
+#
+
+## Projeto de Programação Imperativa e Funcional - 2024.2 - CESAR School
 <h3>Integrantes da Equipe</h3>
 
 <ul>
