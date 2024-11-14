@@ -40,19 +40,19 @@ Essa evolução incentiva o jogador a interagir constantemente e a acompanhar o 
 
 #
 
-#### Instruções para compilar e executar o jogo
+### Instruções para compilar e executar o jogo
 
-Pré-requisitos: 
+#### Pré-requisitos: 
 
 Esse jogo funciona com os seguintes sistemas operacionais: Linux (Ubuntu, etc) e MacOS;
 É necessário ter o gcc instalado;
-O jogo utiliza a biblioteca cli-lib(https://github.com/tgfb/cli-lib) para funcionar.
+O jogo utiliza a biblioteca cli-lib (https://github.com/tgfb/cli-lib) para funcionar.
 
-#### Compilação:
+### Compilação:
 
 Para compilar o jogo, basta abrir a pasta onde o jogo está localizado e executar o seguinte comando: make
 
-execução do jogo:
+### Execução do jogo:
 
 Para executar o jogo, basta abrir a pasta onde o jogo está localizado e executar o seguinte comando: ./build/Bichinho
 
