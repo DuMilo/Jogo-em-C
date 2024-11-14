@@ -1,5 +1,7 @@
 ## Projeto de Programação Imperativa e Funcional - 2024.2 - CESAR School
 
+<h3>Nome do Jogo: Pulguinha Virtual</h3>
+
 <h3>História do Jogo</h3>
 
 #### Você foi encarregado de cuidar de um bichinho que chegou à porta de sua casa. Sua missão de agora em diante é cuidar de seu novo pet para ele viver uma longa e feliz vida.
