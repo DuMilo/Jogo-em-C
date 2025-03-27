@@ -62,7 +62,7 @@ Para executar o jogo, basta abrir a pasta onde o jogo está localizado e executa
 <h3>Integrantes da Equipe</h3>
 
 <ul>
-<li>Arthur Rodrigues <a href="https://github.com/wiithesecond">[@wiithesecond]</a></li>
+  <li>Coraline Rodrigues <a href="https://github.com/ollie-coraline">[@]</a></li>
 <li>Milo Moreira e Castro <a href="https://github.com/DuMilo">[@DuMilo]</a></li> 
 <li>Sofia Travassos Bezerra <a href="https://github.com/SofiaTravassos">[@SofiaTravassos]</a></li>
 </ul>
